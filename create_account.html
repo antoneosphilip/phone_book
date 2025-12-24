@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact</title>
+    
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .contact-card {
+            background-color: #e8e8e8;
+            border: 3px solid #666;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 380px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #d0d0d0;
+            padding: 12px 15px;
+            border-bottom: 2px solid #999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .back-btn {
+            background-color: #f5f5f5;
+            border: 2px solid #999;
+            border-radius: 6px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .back-btn:hover {
+            background-color: #fff;
+        }
+
+        .back-icon {
+            font-size: 16px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-container {
+            padding: 20px;
+            background-color: #e8e8e8;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            min-width: 70px;
+            text-align: left;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 8px 12px;
+            border: 2px solid #999;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #fff;
+        }
+
+        .input-field::placeholder {
+            color: #999;
+        }
+
+        .gender-buttons {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .gender-btn {
+            padding: 8px 20px;
+            border: 2px solid #999;
+            border-radius: 6px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .gender-btn.active {
+            background-color: #ddd;
+            border-color: #666;
+        }
+
+        .gender-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #999;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background-color: #f5f5f5;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+        }
+
+        .btn-icon {
+            font-size: 16px;
+        }
+
+        .footer {
+            background-color: #d0d0d0;
+            padding: 12px;
+            text-align: center;
+            border-top: 2px solid #999;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-card">
+        <div class="header">
+            <a href="#" class="back-btn" id="backBtn">
+                <span class="back-icon">◀</span>
+                <span>Back</span>
+            </a>
+            <h1 class="title">New Contact</h1>
+        </div>
+
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="input-field">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" class="input-field" placeholder="(202) 555-5555">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <input type="email" id="email" class="input-field">
+                </div>
+
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <div class="gender-buttons">
+                        <button type="button" class="gender-btn" data-gender="female">female</button>
+                        <button type="button" class="gender-btn active" data-gender="male">male</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="btn save-btn">
+                        <span class="btn-icon">✓</span>
+                        <span>Save</span>
+                    </button>
+                    <button type="button" class="btn cancel-btn" id="cancelBtn">
+                        <span class="btn-icon">⊗</span>
+                        <span>Cancel</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>Contact List</p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Gender button selection
+            $('.gender-btn').on('click', function() {
+                $('.gender-btn').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            // Form submission
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                var contactData = {
+                    name: $('#name').val(),
+                    phone: $('#phone').val(),
+                    email: $('#email').val(),
+                    gender: $('.gender-btn.active').data('gender')
+                };
+                
+                console.log('Contact saved:', contactData);
+                alert('Contact saved successfully!');
+                
+                // Reset form
+                this.reset();
+                $('.gender-btn').removeClass('active');
+                $('.gender-btn[data-gender="male"]').addClass('active');
+            });
+
+            // Cancel button
+            $('#cancelBtn').on('click', function() {
+                if (confirm('Are you sure you want to cancel?')) {
+                    $('#contactForm')[0].reset();
+                    $('.gender-btn').removeClass('active');
+                    $('.gender-btn[data-gender="male"]').addClass('active');
+                }
+            });
+
+            // Back button
+            $('#backBtn').on('click', function(e) {
+                e.preventDefault();
+                alert('Going back to contact list...');
+            });
+        });
+    </script>
+</body>
+</html>
