@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mobile Contact List</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- jQuery Mobile init (MUST be before mobile.js) -->
+    <script>
+        $(document).on("mobileinit", function () {
+            $.mobile.ajaxEnabled = false;
+        });
+    </script>
+
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <style>
+        .contact-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        .ui-listview>li .ui-btn {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-name {
+            margin-left: 10px;
+            flex: 1;
+        }
+
+        body {
+            max-width: 50px;
+            /* iPhone width */
+            margin: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <!-- ✅ jQuery CODE -->
+    <script>
+        $(document).on("pagecreate", "#contacts", function () {
+
+            // Add button click
+            $(".ui-btn-left").on("click", function () {
+                alert("Add Contact clicked");
+            });
+
+            // Phone icon click
+            $("a[href^='tel']").on("click", function () {
+                console.log("Calling: " + $(this).attr("href"));
+            });
+
+        });
+    </script>
+
+</head>
+
+<body style="width: 100px;">
+
+    <div data-role="page" id="contacts" >
+
+        <!-- HEADER -->
+        <div data-role="header" data-position="fixed">
+            <a href="#" data-icon="plus" class="ui-btn-left">Add</a>
+            <h1>Contact List</h1>
+        </div>
+
+        <!-- CONTENT -->
+        <div data-role="content">
+
+            <ul data-role="listview" data-filter="true" data-filter-placeholder="Filter items..." data-inset="false">
+
+                <li>
+                    <a href="#">
+                        <img src="https://img.freepik.com/free-vector/good-customer-service-from-call-center-phone-conversation-vector_1284-43144.jpg?t=st=1766579496~exp=1766583096~hmac=35913dfa4666cdc661dcb48f8b4d21ab79aaa1be4100612f9994f20b5a10f070" class="contact-img">
+                        <span class="contact-name">Mona Abdelrahman</span>
+                        <a href="tel:0100000000" data-icon="phone" data-iconpos="notext"></a>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="https://mis.kfs.edu.eg/arts/img/contact/contact.png" class="contact-img">
+                        <span class="contact-name">Karim Ali</span>
+                        <a href="tel:0111111111" data-icon="phone" data-iconpos="notext"></a>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="https://mis.kfs.edu.eg/arts/img/contact/contact.png" class="contact-img">
+                        <span class="contact-name">Mohamed Ahmed</span>
+                        <a href="tel:0122222222" data-icon="phone" data-iconpos="notext"></a>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="https://img.freepik.com/free-vector/good-customer-service-from-call-center-phone-conversation-vector_1284-43144.jpg?t=st=1766579496~exp=1766583096~hmac=35913dfa4666cdc661dcb48f8b4d21ab79aaa1be4100612f9994f20b5a10f070" class="contact-img">
+                        <span class="contact-name">Eman Ali</span>
+                        <a href="tel:0155555555" data-icon="phone" data-iconpos="notext"></a>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div data-role="footer" data-position="fixed">
+            <h4>Contact List</h4>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
